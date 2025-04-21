@@ -1,10 +1,12 @@
 import './style.css'
 
+const IP = '0.0.0.0.0' // Replace with your server IP
+
 const img_extensions = ['jpg', 'jpeg', 'png', 'webp', 'bmp', 'tiff', 'svg', 'ico', 'avif', 'heic']
 const video_extensions = ['mp4', 'mkv', 'webm', 'avi', 'mov', 'flv', 'wmv', 'mpeg', 'mpg', '3gp', 'ogg']
 
 
-fetch('http://192.168.1.14:3000/files')
+fetch(`http://${IP}:3000/files`)
   .then(res => res.json())
   .then(response => {
     Array.from(response.files).reverse().forEach(file => {
@@ -46,9 +48,9 @@ function createFileCard(name) {
   text_container.classList.add('text-container')
   text.onclick = () => {
     if (isVideo) {
-      window.open('http://192.168.1.14:3000/video/' + name, '_blank', `width=900,height=600,toolbar=no,scrollbars=no,resizable=yes,left=${left},top=${top}`)
+      window.open(`http://${IP}:3000/video/` + name, '_blank', `width=900,height=600,toolbar=no,scrollbars=no,resizable=yes,left=${left},top=${top}`)
     } else {
-      window.open('http://192.168.1.14:3000/file/' + name, '_blank', `width=900,height=600,toolbar=no,scrollbars=no,resizable=yes,left=${left},top=${top}`)
+      window.open(`http://${IP}:3000/file/` + name, '_blank', `width=900,height=600,toolbar=no,scrollbars=no,resizable=yes,left=${left},top=${top}`)
     }
   }
   card.classList.add('card')
@@ -59,7 +61,7 @@ function createFileCard(name) {
   remove_img.src = './delete.svg'
   download_img.src = './download.svg'
   remove.onclick = async () => {
-    fetch('http://192.168.1.14:3000/delete/' + name, {
+    fetch(`http://${IP}:3000/delete/` + name, {
       method: 'DELETE'
     })
       .then(() => {
@@ -70,7 +72,7 @@ function createFileCard(name) {
       })
   }
   download.onclick = async () => {
-    const response = await fetch('http://192.168.1.14:3000/file/' + name)
+    const response = await fetch(`http://${IP}:3000/file/` + name)
     const file = await response.blob()
     const link = document.createElement('a')
     link.href = URL.createObjectURL(file)

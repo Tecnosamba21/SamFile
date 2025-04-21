@@ -8,7 +8,7 @@ const app = express()
 const upload = multer({
     dest: 'uploads/'
 })
-const port = 3000
+const port = 3000 // Change to whatever you want
 
 app.use(cors())
 

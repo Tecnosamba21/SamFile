@@ -1,5 +1,7 @@
 import Swal from "sweetalert2"
 
+const IP = '0.0.0.0.0.0' // Replace with your server IP
+
 document.getElementById('submit').addEventListener('submit', function (event) {
     event.preventDefault()
 
@@ -8,7 +10,7 @@ document.getElementById('submit').addEventListener('submit', function (event) {
 
     const formData = new FormData(this);
 
-    fetch('http://192.168.1.14:3000/upload', {
+    fetch(`http://${IP}:3000/upload`, {
         method: 'POST',
         body: formData,
     })
