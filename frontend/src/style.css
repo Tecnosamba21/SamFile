@@ -1,0 +1,263 @@
+@font-face {
+  font-family: 'Open Sans';
+  src: url('/Open_Sans/OpenSans-VariableFont_wdth,wght.ttf');
+}
+
+:root {
+  --font: 'Open Sans'
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 100%;
+  }
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  font-family: var(--font);
+  place-content: center;
+  display: grid;
+  animation: appear 1s;
+  overflow-x: hidden;
+}
+
+button, input, h3 {
+  transition: transform 0.1s ease;
+}
+
+button:active, input:active, h3:active {
+  transform: scale(0.95);
+}
+
+input:disabled {
+  cursor: not-allowed;
+  opacity: 60%;
+}
+
+dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /*! Arreglar esto para que no se solape */
+  padding: 2rem;
+  border: none;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  height: 90%;
+  z-index: 1;
+  width: 90%;
+}
+
+.toastify {
+  z-index: 9999 !important;
+}
+
+dialog:open {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  gap: 20px;
+
+  input[type='submit'], button {
+    border: 2px solid transparent;
+    background-color: rgba(121, 121, 255, 0.61);
+    padding: 10px;
+
+    font-size: medium;
+    font-family: 'Open Sans';
+
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: all .35s;
+  }
+
+  button:hover {
+    border: 2px solid black;
+  }
+
+  #submit {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+  }
+
+  #close button {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 5px;
+    background-color: lightcoral;
+  }
+
+  input[type='file'] {
+    font-family: 'Open Sans';
+  }
+
+  input[type='file']::file-selector-button {
+    font-family: 'Open Sans';
+    cursor: pointer;
+    padding: 10px;
+    border: 2px solid transparent;
+    transition: all .35s;
+    border-radius: 4px;
+    outline: 0;
+  }
+
+  input[type='file']::file-selector-button:hover {
+    border: 2px solid black;
+  }
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+h1 {
+  font-size: 5ch;
+}
+
+main {
+  display: grid;
+  gap: 10px;
+
+  padding: 15px;
+  border-radius: 4px;
+  max-height: 500px;
+}
+
+main button {
+  border: 2px solid transparent;
+  outline: 0;
+  background-color: #f0f0f0;
+  padding: 10px;
+  font-family: 'Open Sans';
+  font-size: medium;
+  cursor: pointer;
+  transition: border .35s;
+  border-radius: 4px;
+}
+
+main button:hover {
+  border: 2px solid black;
+}
+
+.card {
+  display: grid;
+  grid-template-columns: 5fr 1fr;
+  width: 700px;
+  height: fit-content;
+  padding: 10px;
+  border-bottom: 3px solid black;
+
+  button {
+    height: 30px;
+    width: 30px;
+    border-radius: 999999px;
+    border: 0;
+    outline: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: transparent;
+    transition: background .35s;
+
+    cursor: pointer;
+
+  }
+
+  .buttons {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+  }
+
+  button:hover {
+    background-color: rgba(128, 128, 128, 0.43);
+    border: 0;
+  }
+
+  .text-container {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+  }
+
+  h3 {
+    color: blue;
+    border-bottom: 3px solid transparent;
+    position: relative;
+    font-weight: 400;
+    padding: 3px;
+    cursor: text;
+    transition: all 0.35s ease;
+    cursor: pointer;
+    width: fit-content;
+    max-width: 50ch;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  h3:hover {
+    border-color: blue;
+  }
+}
+
+
+.download {
+  img {
+    height: 28px;
+    width: 28px;
+  }
+}
+
+@media (max-width: 1250px) {
+  .card {
+    width: 400px;
+    h3 {
+      max-width: 30ch;
+    }
+  }
+}
+
+.items.ds-selected {
+  background-color: black;
+}
+
+.droparea {
+  transition: border 1s background 1s;
+}
+
+.dropping {
+  border: 2px solid purple;
+  background-image: linear-gradient(45deg, purple, orange);
+}

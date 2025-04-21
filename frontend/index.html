@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <title>Server files</title>
+</head>
+
+<body>
+  <div id="app">
+    <dialog class="droparea">
+      <form method="dialog" id="close">
+        <button>X</button>
+      </form>
+      <h2>Upload files:</h2>
+      <form action="http://192.168.1.14:3000/upload" enctype="multipart/form-data" method="post" id="submit">
+        <input type="file" name="files" multiple="true" id="files">
+        <input type="submit" value="Upload" id="submit-button">
+      </form>
+    </dialog>
+    <h1>
+      SamFile
+      <h4>Upload and download files from the server</h4>
+    </h1>
+
+    <main>
+      <button onclick="document.querySelector('dialog').showModal()">Upload a file</button>
+    </main>
+  </div>
+  <script type="module" src="/src/main.js"></script>
+  <script type="module" src="/src/upload.js"></script>
+  <script type="module" src="/src/drop.js"></script>
+</body>
+
+</html>
